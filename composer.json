@@ -19,6 +19,7 @@
         "ext-pdo_mysql": "*",
         "ext-redis": "*",
         "ext-swoole": ">=4.2",
+        "duncan3dc/blade": "^4.7",
         "hyperf/amqp": "1.1.*",
         "hyperf/async-queue": "1.1.*",
         "hyperf/cache": "1.1.*",
@@ -45,7 +46,9 @@
         "hyperf/pool": "1.1.*",
         "hyperf/process": "1.1.*",
         "hyperf/redis": "1.1.*",
+        "hyperf/task": "1.1.*",
         "hyperf/utils": "1.1.*",
+        "hyperf/view": "1.1.*",
         "overtrue/wechat": "^4.2"
     },
     "require-dev": {
