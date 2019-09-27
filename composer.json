@@ -49,6 +49,7 @@
         "hyperf/task": "1.1.*",
         "hyperf/utils": "1.1.*",
         "hyperf/view": "1.1.*",
+        "inhere/php-validate": "^2.7",
         "overtrue/wechat": "^4.2"
     },
     "require-dev": {

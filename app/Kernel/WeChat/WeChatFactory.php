@@ -10,11 +10,11 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-namespace App\Core\WeChat;
+namespace App\Kernel\WeChat;
 
 use App\Constants\ErrorCode;
-use App\Core\Http\Response;
 use App\Exception\BusinessException;
+use App\Kernel\Http\Response;
 use EasyWeChat\Factory;
 use EasyWeChat\Kernel\ServiceContainer;
 use GuzzleHttp\HandlerStack;
