@@ -28,13 +28,16 @@ class IndexController extends Controller
 
     public function index()
     {
-        $user = $this->request->input('user', 'Hyperf');
-        $method = $this->request->getMethod();
-        return $this->response->success([
-            'user' => $user,
-            'method' => $method,
-            'message' => 'Hello Hyperf.',
-        ]);
+        $code = $this->request->input('code');
+
+        $result = $this->service->info($code);
+
+        return $this->response->success($result);
+    }
+
+    public function authorize()
+    {
+        return $this->service->authorize();
     }
 
     /**

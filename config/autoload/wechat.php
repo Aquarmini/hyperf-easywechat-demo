@@ -21,5 +21,12 @@ return [
         ],
     ],
     'h5' => [
+        'app_id' => env('WECHAT_APPID'),
+        'secret' => env('WECHAT_SECRET'),
+        'response_type' => 'array',
+        'log' => [
+            'level' => 'debug',
+            'file' => BASE_PATH . '/runtime/logs/wechat.log',
+        ],
     ],
 ];
