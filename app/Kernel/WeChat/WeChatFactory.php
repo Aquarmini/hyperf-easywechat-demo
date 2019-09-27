@@ -71,7 +71,7 @@ class WeChatFactory
 
         $app = Factory::$class($config);
         // 重写 Handler
-        $app['guzzle_handler'] = CoroutineHandler::class;
+        $app['guzzle_handler'] = new CoroutineHandler();
         // 设置缓存
         $app['cache'] = $this->container->get(RedisCache::class);
         // 设置 OAuth 授权的 Guzzle 配置

@@ -49,7 +49,6 @@ class WeChatService extends Service
                 if (empty($session)) {
                     throw new BusinessException(ErrorCode::SERVER_ERROR, '小程序登录失败');
                 }
-
                 $result = $app->encryptor->decryptData($session, $data['iv'], $data['encrypted_data']);
                 $step[] = 5;
             } finally {
