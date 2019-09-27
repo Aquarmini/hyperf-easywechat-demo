@@ -24,4 +24,12 @@ class IndexController extends Controller
             'message' => 'Hello Hyperf.',
         ]);
     }
+
+    /**
+     * 小程序登录.
+     */
+    public function login()
+    {
+        return $this->response->success();
+    }
 }

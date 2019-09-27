@@ -10,6 +10,11 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-return [
-    Hyperf\Contract\StdoutLoggerInterface::class => App\Kernel\Log\LoggerFactory::class,
-];
+namespace App\Service;
+
+class WeChatService extends Service
+{
+    public function login()
+    {
+    }
+}
