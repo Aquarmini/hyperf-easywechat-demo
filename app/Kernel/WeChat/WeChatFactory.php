@@ -17,9 +17,11 @@ use App\Exception\BusinessException;
 use App\Kernel\Http\Response;
 use EasyWeChat\Factory;
 use EasyWeChat\Kernel\ServiceContainer;
+use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Guzzle\CoroutineHandler;
+use Hyperf\Guzzle\HandlerStackFactory;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Overtrue\Socialite\Providers\AbstractProvider;
 use Psr\Container\ContainerInterface;
@@ -69,11 +71,20 @@ class WeChatFactory
 
         $config = $config[$source];
 
+        /** @var ServiceContainer $app */
         $app = Factory::$class($config);
+
+        // 设置 HttpClient，当前设置没有实际效果，在数据请求时会被 guzzle_handler 覆盖，但不保证 EasyWeChat 后面会修改这里。
+        $config = $app['config']->get('http', []);
+        $config['handler'] = $this->container->get(HandlerStackFactory::class)->create();
+        $app->rebind('http_client', new Client($config));
+
         // 重写 Handler
         $app['guzzle_handler'] = new CoroutineHandler();
+
         // 设置缓存
         $app['cache'] = $this->container->get(RedisCache::class);
+
         // 设置 OAuth 授权的 Guzzle 配置
         AbstractProvider::setGuzzleOptions([
             'http_errors' => false,
